@@ -2,20 +2,46 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns = "http://www.w3.org/1999/xhtml"   
-   xmlns:h = "http://java.sun.com/jsf/html"
-   xmlns:ui = "http://java.sun.com/jsf/facelets">
-   
-   <h:body>
-      <ui:composition template = "templates/common.xhtml">	
-         <ui:param name="title" value="Home" />
-         <ui:define name = "content">				
-            <p>The default content has been overriden !</p>
-            <br/><br/>
-             <h:link value = "Page 1" outcome = "page1" />
-             <h:link value = "Page 2" outcome = "page2" />			
-            <br/><br/>
-         </ui:define>
-      </ui:composition>
-   </h:body>
-</html>	
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>JSF tutorial</title>
+	<h:outputStylesheet name="styles.css" />
+</h:head>
+
+<h:body>
+	<h2>DataTable Example</h2>
+
+	<h:form>
+		<h:dataTable value="#{userData.employees}" var="employee"
+			styleClass="employeeTable" headerClass="employeeTableHeader"
+			rowClasses="employeeTableOddRow,employeeTableEvenRow">
+
+			<h:column>
+				<f:facet name="header">Name</f:facet>    				
+               #{employee.name}
+            </h:column>
+
+			<h:column>
+				<f:facet name="header">Department</f:facet>
+               #{employee.department}
+            </h:column>
+
+			<h:column>
+				<f:facet name="header">Age</f:facet>
+               #{employee.age}
+            </h:column>
+
+			<h:column>
+				<f:facet name="header">Salary</f:facet>
+               #{employee.salary}
+            </h:column>
+		</h:dataTable>
+		
+	</h:form>
+
+</h:body>
+</html>
