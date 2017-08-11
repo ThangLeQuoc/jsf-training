@@ -61,6 +61,16 @@
 						value="#{employee}"></f:setPropertyActionListener>
 				</h:commandButton>
 			</h:column>
+
+			<h:column>
+				<f:facet name="header">Delete</f:facet>
+				<h:commandButton value="Delete Me"
+					action="#{userData.deleteEmployee(employee)}"
+					rendered="#{not employee.canEdit}">
+					<f:setPropertyActionListener target="#{employee}"
+						value="#{employee}"></f:setPropertyActionListener>
+				</h:commandButton>
+			</h:column>
 		</h:dataTable>
 		<h:commandButton value="Save Employees"
 			action="#{userData.saveEmployees}" />
