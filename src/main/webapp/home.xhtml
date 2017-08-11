@@ -21,25 +21,49 @@
 			rowClasses="employeeTableOddRow,employeeTableEvenRow">
 
 			<h:column>
-				<f:facet name="header">Name</f:facet>    				
-               #{employee.name}
-            </h:column>
+				<f:facet name="header">Name</f:facet>
+				<h:inputText value="#{employee.name}" size="10"
+					rendered="#{employee.canEdit}" />
+				<h:outputText value="#{employee.name}"
+					rendered="#{not employee.canEdit}" />
+			</h:column>
 
 			<h:column>
 				<f:facet name="header">Department</f:facet>
-               #{employee.department}
-            </h:column>
+				<h:inputText value="#{employee.department}" size="20"
+					rendered="#{employee.canEdit}" />
+				<h:outputText value="#{employee.department}"
+					rendered="#{not employee.canEdit}" />
+			</h:column>
 
 			<h:column>
 				<f:facet name="header">Age</f:facet>
-               #{employee.age}
-            </h:column>
+				<h:inputText value="#{employee.age}" size="20"
+					rendered="#{employee.canEdit}" />
+				<h:outputText value="#{employee.age}"
+					rendered="#{not employee.canEdit}" />
+			</h:column>
 
 			<h:column>
 				<f:facet name="header">Salary</f:facet>
-               #{employee.salary}
-            </h:column>
+				<h:inputText value="#{employee.salary}" size="20"
+					rendered="#{employee.canEdit}" />
+				<h:outputText value="#{employee.salary}"
+					rendered="#{not employee.canEdit}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Edit</f:facet>
+				<h:commandButton value="Edit Info"
+					action="#{userData.editEmployee(employee)}"
+					rendered="#{not employee.canEdit}">
+					<f:setPropertyActionListener target="#{employee}"
+						value="#{employee}"></f:setPropertyActionListener>
+				</h:commandButton>
+			</h:column>
 		</h:dataTable>
+		<h:commandButton value="Save Employees"
+			action="#{userData.saveEmployees}" />
 
 		<h3>Add Employee</h3>
 		<hr />
@@ -51,7 +75,7 @@
 
 			<tr>
 				<td>Department :</td>
-				<td><h:inputText size="20" value="#{userData.dept}" /></td>
+				<td><h:inputText size="20" value="#{userData.department}" /></td>
 			</tr>
 
 			<tr>

@@ -16,6 +16,10 @@ public class Employee {
 		this.canEdit = false;
 	}
 
+	public Employee() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -55,6 +59,8 @@ public class Employee {
 	public void setCanEdit(boolean canEdit) {
 		this.canEdit = canEdit;
 	}
+	
+	
 	
 	
 	
